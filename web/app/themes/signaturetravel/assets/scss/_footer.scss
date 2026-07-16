@@ -1,0 +1,134 @@
+footer {
+  background: $primary_color;
+  h5 {
+    @include typography(xs, $fw_semi_bold, $secondary_color, 100%, 0%, uppercase);    
+    position: relative;
+    display: inline-block;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    &:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: $secondary_color;
+    }
+  }
+  ul {
+    padding-left: 0;
+    li {
+      @include typography(xxs, $fw_medium, $light_color, 28px, 3%, uppercase); 
+      list-style: none;
+      a {
+        @include typography(xxs, $fw_medium, $light_color, 28px, 3%, uppercase); 
+      }
+    }
+  }
+  a {
+    &:hover {
+      color: $secondary_color;
+    }
+  }
+  .social-media {
+    a {
+      .s-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 1px solid $border_color;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &:hover {
+        .s-icon {
+          background: $secondary_color;
+          border: 1px solid $secondary_color;
+        }
+      }
+    } 
+  }
+  .footer-bottom {
+    padding: 10px 0;
+    ul {
+      display: flex;
+      margin: 0;
+      li {
+        margin-right: 24px;
+        @media(max-width: 1199.98px) {
+          margin-right: 10px;
+        }
+        a {
+          &:hover {
+            color: $primary_color;
+          }
+        }
+      }
+      @media(max-width: 768.98px) {
+        display: inline;
+        li {
+          display: inline;
+          margin-right: 10px;
+        }
+      }
+      @media(max-width: 991.98px) {
+        justify-content: center;
+      }
+    }
+    p {
+      margin-bottom: 0;
+      color: $light_color;
+      font-family: $primary_font;
+    }
+    @media(max-width: 768.98px) {
+      .menu-footer-menu-3-container {
+        border-bottom: 1px solid #c9c9c9;
+        padding-bottom: 12px;
+      }
+    }
+  }
+}
+
+#scrollTop {  
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background: $secondary_color;
+  padding: 10px 14px;
+  border: none;
+  cursor: pointer;
+  display: none; 
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  @media(max-width: 768.98px) {
+    bottom: 130px;
+    right: 18px;
+  }
+}
+#scrollTop::after {
+  content: url('../images/arrow-up.png');
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#scrollTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
