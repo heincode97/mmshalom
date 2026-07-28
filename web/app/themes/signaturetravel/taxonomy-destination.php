@@ -30,7 +30,6 @@ $current_term = get_queried_object();
         $destinations = get_terms([
             'taxonomy'   => 'destination',
             'hide_empty' => true,
-//             'orderby'    => 'term_id',
             'orderby' => 'date',
             'order'   => 'ASC'
         ]);

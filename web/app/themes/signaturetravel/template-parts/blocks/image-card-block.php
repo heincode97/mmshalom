@@ -50,6 +50,45 @@ if ( $choose_type == 'destination' && $layout == 'slider' ) {
 			</div>
 		</div>
 	</section>
+<?php } elseif ( $choose_type == 'destination' && $layout == 'grid' ) {
+	$taxo_name    = $choose_type;
+	$destinations = get_terms( [
+		'taxonomy'   => $taxo_name,
+		'hide_empty' => false,
+	] );
+	?>
+	<section class="destinations">
+		<div class="container-fluid">
+			<div class="row">
+				<?php foreach ( $destinations as $desi ) :
+					$thumbnail = get_field( 'destination_image', $taxo_name . '_' . $desi->term_id );
+					$thumb_url = is_array( $thumbnail ) && isset( $thumbnail['url'] )
+						? $thumbnail['url']
+						: ( is_string( $thumbnail ) ? $thumbnail : '' );
+					$title     = $desi->name ?? '';
+					$link      = get_term_link( $desi->term_id );
+					?>
+					<div class="col-lg-4 col-md-6 col-12 mb-4">
+						<div class="desti-card">
+							<a href="<?php echo esc_url( $link ); ?>" title="<?php echo esc_attr( $title ); ?>">
+								<?php if ( ! empty( $thumb_url ) ) : ?>
+									<div class="zoom-overlay img-wrapper">
+										<img src="<?php echo esc_url( $thumb_url ); ?>" class="img-fluid" alt="<?php echo esc_attr( $title ); ?>">
+									</div>
+								<?php endif; ?>
+								<div class="text-wrapper">
+									<?php if ( ! empty( $title ) ) : ?>
+										<h4 class="text-white"><?php echo esc_html( $title ); ?> <img
+												src="<?php echo ASSET_URL; ?>images/arrow-right.svg" class="img-fluid" alt="arrow"></h4>
+									<?php endif; ?>
+								</div>
+							</a>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
 <?php } elseif ( $choose_type == 'tour-package' && $tour_package_taxo->slug == 'travel-logues' ) { ?>
 	<?php
 	$taxonomy  = ST_TOUR_TYPE;
