@@ -1,0 +1,153 @@
+// Destination Detail Page Styles
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 30px;
+
+    @media (max-width: 767.98px) {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px;
+        border: 1px solid $secondary_color;
+        color: $secondary_color;
+        background: transparent;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all .25s ease;
+
+        &:hover {
+            background: #b29559;
+            color: #fff;
+        }
+    }
+}
+
+// Destinations Page Styles
+// 2026/7
+
+.country-map-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 12px;
+
+    @media (max-width: 991.98px) {
+        flex-direction: column;
+    }
+
+    .country-map img {
+        width: 100%;
+        height: 550px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 10px;
+
+        @media (max-width: 768px) {
+            height: auto;
+        }
+    }
+
+    // 27 Jul 2026
+    .px-0 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    // 28 Jul 2026
+    .country-list {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+
+            &::before {
+                content: url("https://mmshalom.dev.myanmarcafe.trade/app/uploads/2026/07/check.svg");
+                position: absolute;
+                left: 0;
+                top: 0;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.destination-description {
+    column-count: 2;
+    column-gap: 40px;
+    margin-top: 40px;
+    text-align: left;
+
+    p {
+        margin-bottom: 20px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        column-count: 1;
+        column-gap: 0;
+    }
+}
+
+.destination-list {
+    .destination-item {
+        .destination-content {
+
+            // 28 Jul 2026
+            .destination-desc ul {
+                list-style: none;
+                padding-left: 0;
+
+                li {
+                    position: relative;
+                    padding-left: 26px;
+                    margin-bottom: 12px;
+                    line-height: 1.5;
+
+                    &::before {
+                        content: url("https://mmshalom.dev.myanmarcafe.trade/app/uploads/2026/07/check.svg");
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.social-links-section {
+    .social-links {
+        a {
+            &:hover {
+                background-color: $secondary_color;
+                border-color: $secondary_color;
+
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+    }
+}

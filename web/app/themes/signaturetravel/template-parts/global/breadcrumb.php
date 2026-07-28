@@ -1,5 +1,6 @@
 <?php
 $default_image = ASSET_URL . 'images/inner-banner.jpg';
+$hide_banner_image = is_tax('destination');
 
 if ( is_tax() || is_category() || is_tag() ) {
 
@@ -15,13 +16,14 @@ if ( is_tax() || is_category() || is_tag() ) {
     $banner_image = get_field('banner_image', get_the_ID());
 
 }
-
 $image_url = !empty($banner_image) ? $banner_image : $default_image;
 ?>
 
 <section class="inner-banner">
     <div class="inner-banner__hero">
-        <img src="<?php echo esc_url($image_url); ?>" alt="">
+        <?php if ( !$hide_banner_image ) : ?>
+            <img src="<?php echo esc_url($image_url); ?>" alt="">
+        <?php endif; ?>
         
         <div class="inner-banner__overlay">
             <div class="container">

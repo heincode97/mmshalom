@@ -15,6 +15,7 @@ define('ST_BLOG_PT', 'blog');
 
 // define taxonomy
 define('ST_DESTI_TAXO', 'destination');
+define('ST_EXPERIENCE_TAXO', 'experience');
 define('ST_TOUR_TYPE', 'tour-package-type');
 
 // Include required files
@@ -274,8 +275,23 @@ add_action('acf/init', function() {
           'render_template' => '/template-parts/blocks/image-card-block.php',
           'category'        => 'signature-travel-blocks',
           'icon'            => 'format-image',
-      ));  
+      ));
       
+      acf_register_block_type(array(
+        'name' => 'tour-card',
+        'title' => __('Tour Card'),
+        'render_template' => '/template-parts/blocks/tour-card.php',
+        'category' => 'signature-travel-blocks',
+        'icon' => 'format-gallery',
+      ));
+
+      acf_register_block_type(array(
+        'name' => 'social-links',
+        'title' => __('Social Links'),
+        'render_template' => '/template-parts/blocks/social-links.php',
+        'category' => 'signature-travel-blocks',
+        'icon' => 'admin-links',
+      ));
     }
 });
 
