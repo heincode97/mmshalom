@@ -1,0 +1,199 @@
+// ----------------------
+// Base Typography
+// ----------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul li, 
+a,
+tr td {
+  font-family: $primary_font;
+}
+
+
+$font-sizes: (
+  xxs: 14px,
+  xs: 16px,
+  sm: 18px,
+  md: 22px,
+  lg: 24px,
+  xl: 26px,
+  xxl: 28px,
+  h3: 32px,
+  h2: 40px,
+  h1: 46px
+);
+
+
+@mixin typography($size, $weight, $color, $line-height, $letter-spacing, $transform) {
+  font-size: map-get($font-sizes, $size);
+  font-weight: $weight;
+  line-height: $line-height;
+  color: $color;
+  letter-spacing: $letter-spacing;
+  text-transform: $transform;
+}
+
+
+h1 {
+  @include typography(h1, 700, #000, 1.4, 1px, uppercase);
+  @media(max-width: 768.98px) {
+    font-size: 22px;
+  }
+}
+h2.main-title {
+  @include typography(h2, $fw_light, $title_color, 40px, 0.5px, uppercase);
+}
+.main-title {
+  position: relative;
+  margin-bottom: 60px;
+    @media (max-width: 768px) {
+        margin-bottom: 40px;
+    }
+
+  &:after {
+    content: "";
+    width: 90px;
+    height: 1.5px;
+    display: inline-block;
+    background: linear-gradient(180deg, #C9B469 0%, #B79C55 100%);
+    position: absolute;
+    bottom: -20px;
+  }
+
+  &.text-center {
+    &:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &.text-start {
+    &:after {
+      left: 0;
+      transform: none;
+    }
+  }
+  &.text-end {
+    &:after {
+      right: 0;
+      transform: none;
+    }
+  }
+}
+.section-title{
+  color: $section-title;
+}
+.fw-medium{
+  font-weight: $fw_medium;
+}
+.fw-regular{
+  font-weight: $fw_regular;
+}
+h3 {
+  @include typography(h3, $fw_regular, $text_color, 100%, 0, capitalize);
+}
+h4 {
+  @include typography(lg, $fw_semi_bold, $text_color, 100%, 0%, uppercase);
+}
+
+h5 {
+  @include typography(sm, $fw_semi_bold, $text_color, 22px, 0%, uppercase);
+}
+
+h6 {
+  @include typography(xs, $fw_regular, $light_color, 22px, 0%, capitalize);
+  font-family: $secondary_font;
+}
+
+p {
+  @include typography(xs, $fw_regular, $text_color, 1.6, 0%, normal);
+  font-family: $secondary_font;
+}
+// ----------------------
+// Button Base Mixin
+// ----------------------
+@mixin button-base(
+  $bg, 
+  $color, 
+  $border: null, 
+  $hover-bg: null, 
+  $hover-color: null, 
+  $hover-border: null
+) {
+  display: inline-block;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 0;
+  background-color: $bg;
+  color: $color;
+  border: 1px solid if($border != null, $border, $bg);
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: if($hover-bg != null, $hover-bg, $bg);
+    color: if($hover-color != null, $hover-color, $color);
+    border-color: if($hover-border != null, $hover-border, if($border != null, $border, $bg));
+  }
+}
+
+// ----------------------
+// Button Usage
+// ----------------------
+.btn-primary {
+  @include button-base($secondary_color, $light_color, null, $secondary_color);
+  &:hover {
+    color: $primary_color;
+  }
+}
+
+.btn-primary:focus,
+.btn-primary:focus-visible {
+    color: $light_color;
+    background-color: $secondary_color;
+    border-color: $secondary_color;
+    box-shadow: none !important;
+}
+
+.btn-secondary {
+  @include button-base(transparent, $secondary_color, null, transparent);
+  padding: 0;
+  display: inline-block;
+  &:after {
+    content: url('../images/btn-arrow.svg');
+    padding-left: 6px;
+  }
+
+  &:hover {
+    border-bottom: 1px solid $primary_color;
+    border-radius: 0;
+    color: $primary_color;
+    &:after {
+      content: url('../images/hover-btn-arrow.svg');
+    }
+  }
+  
+  &.alt {
+  @include button-base(transparent, $secondary_color, null, transparent);
+    padding: 0;
+    &:after {
+      content: none;
+    }
+    &:hover {
+      color: $primary_color;
+      border-bottom: 1px solid $primary_color;
+    }
+  }
+}
+
+.text-dark {
+  color: #4f4f4f;
+}
